@@ -27,11 +27,21 @@ function makeCaseInsensitive (arg) {
 function playRound(playerSelection, computerSelection) {
     let a = playerSelection; 
     let b = computerSelection;
-    if (a == b) {
-        console.log(`It's a draw`);
-        
-    } else {
-        
+    if (b == 'rock' && a == 'paper') {
+        console.log(`you win, ${a} beats ${b}`);
+    } else if (b == 'rock' && b == 'scissors') {
+        console.log(`computer win, ${a} beats ${b}`);
+    } else if (a == 'paper' && b == 'scissors') {
+        console.log(`you win, ${a} beats ${b}`);
+    } else if (a == 'rock' && b == 'paper') {
+        console.log(`computer win, ${a} beats ${b}`);
+    } else if (a == 'rock' && b == 'scissors') {
+        console.log(`you win, ${a} beats ${b}`);
+    } else if (a == 'paper' && b == 'scissors') {
+        console.log(`computer win, ${a} beats ${b}`);
+    }else {
+        console.log(`It's a draw, try again`);
+        playRound(playerSelection, computerSelection)
     }
 }
 
