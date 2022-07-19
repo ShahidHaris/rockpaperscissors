@@ -1,6 +1,7 @@
 let random;
 let max = 9;
 
+// make to computer random;y choose
 function getComputerChoice () {
     let state;
     random = Math.floor(Math.random() * max);
@@ -14,4 +15,29 @@ function getComputerChoice () {
     return state;  
 }
 
-console.log(getComputerChoice());
+//make the player selection case insensitive
+function makeCaseInsensitive (arg) {
+    let result = '';
+    for (let i = 0; i < arg.length; i++) {
+        result = result.concat(arg[i].toLowerCase());
+    }
+    return result;
+}
+
+function playRound(playerSelection, computerSelection) {
+    let a = playerSelection; 
+    let b = computerSelection;
+    if (a == b) {
+        console.log(`It's a draw`);
+        
+    } else {
+        
+    }
+}
+
+let selection = "rock";
+const playerSelection = makeCaseInsensitive(selection); 
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+
+

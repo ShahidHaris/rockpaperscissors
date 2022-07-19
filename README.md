@@ -26,7 +26,9 @@
 # step 4 
     -log out the result.
 
-
+# miscellenous
+    -create a function in order to make the user's input case insensitive.
+    -this is done by looping over the input and making sure it was converted to the wrote in the code.
 
 
 
