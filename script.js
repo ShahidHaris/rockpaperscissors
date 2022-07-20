@@ -45,17 +45,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function selection () {
-    return prompt(`Select either of the three: 'rock' 'paper' or 'sciccors'`);
+    let params = prompt(`Select either of the three: 'rock' 'paper' or 'sciccors'`);
+    let  verify = makeCaseInsensitive(params);
     let state;
-    if (params == 'rock' || params == 'paper' || params == 'scissors') {
-        state = params;
+    if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
+        state = verify;
     }   else {
-
+        alert(`You've entered a wrong emtry`);
+        selection();
     }
+    return state;
 } 
 
-let  verify = makeCaseInsensitive(selection()); 
-let playerSelection = verifyEntery(verify)
+let playerSelection = selection();
 const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection, computerSelection));
