@@ -15,7 +15,20 @@ function getComputerChoice () {
     return state;  
 }
 
-//make the player selection case insensitive
+function selection () {
+    let params = prompt(`Select either of the three: 'rock' 'paper' or 'scissors'`);
+    let  verify = makeCaseInsensitive(params);
+    let state;
+    if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
+        state = verify;
+    }   else {
+        alert(`You've entered a wrong entry`);
+        selection();
+    }
+    return state;
+} 
+
+// Make the selection case insensitive
 function makeCaseInsensitive (arg) {
     let result = '';
     for (let i = 0; i < arg.length; i++) {
@@ -24,42 +37,41 @@ function makeCaseInsensitive (arg) {
     return result;
 }
 
-function playRound(playerSelection, computerSelection) {
-    let a = playerSelection; 
-    let b = computerSelection;
-    if (b == 'rock' && a == 'paper') {
-        console.log(`you win, ${a} beats ${b}`);
-    } else if (b == 'rock' && b == 'scissors') {
-        console.log(`computer win, ${a} beats ${b}`);
-    } else if (a == 'paper' && b == 'scissors') {
-        console.log(`you win, ${a} beats ${b}`);
-    } else if (a == 'rock' && b == 'paper') {
-        console.log(`computer win, ${a} beats ${b}`);
-    } else if (a == 'rock' && b == 'scissors') {
-        console.log(`you win, ${a} beats ${b}`);
-    } else if (a == 'paper' && b == 'scissors') {
-        console.log(`computer win, ${a} beats ${b}`);
-    } else if (a == b){
-        console.log(`It's a draw, try again`);
-    }
-}
-
-function selection () {
-    let params = prompt(`Select either of the three: 'rock' 'paper' or 'sciccors'`);
-    let  verify = makeCaseInsensitive(params);
+function playRound(a, b) {
     let state;
-    if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
-        state = verify;
-    }   else {
-        alert(`You've entered a wrong emtry`);
-        selection();
+    if (b == 'rock' && a == 'paper') {
+        state  = `you`;
+    } else if (b == 'rock' && a == 'scissors') {
+        state  = `computer`;
+    } else if (b == 'paper' && a == 'scissors') {
+        state  = `you`;
+    } else if (a == 'rock' && b == 'paper') {
+        state  = `computer`;
+    } else if (a == 'rock' && b == 'scissors') {
+        state  = `you`;
+    } else if (a == 'paper' && b == 'scissors') {
+        state  = `computer`;
+    } else {
+        return playRound(selection(), getComputerChoice());
     }
     return state;
-} 
+}
 
 let playerSelection = selection();
-const computerSelection = getComputerChoice();
+let computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
+function game () {
+    let you = 0; 
+    let computer = 0;
+    for (let i = 0; i < 5; i++) {
+    let play = playRound(selection(), getComputerChoice());
+        if (play == `you`) {
+        you++;
+        } else {
+        computer++;
+        }
+    }
+    return you > computer ? `You win !!` : `Computer wins !!`;
+};
 
-
+console.log(game());
