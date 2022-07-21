@@ -28,7 +28,8 @@
 
 # miscellenous
     -create a function in order to make the user's input case insensitive.
-    -this is done by looping over the input and making sure it was converted to the wrote in the code.
+    -this is done by looping over the input and making sure it was converted to the case wrote in the code.
+    -in the playRound() function, it might be draw cases where the user's and computer's entry is thesame, in that case a recursive function of the playRound is called to make the user make another selection. 
 
 
 
