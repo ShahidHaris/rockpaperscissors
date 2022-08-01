@@ -1,8 +1,11 @@
-let random;
-let max = 9;
+// select the buttons
+const button = document.querySelectorAll('button');
+
 
 // make to computer random;y choose
 function getComputerChoice () {
+    let random;
+    let max = 9;
     let state;
     random = Math.floor(Math.random() * max);
     if (random >= 0 && random <= 2) {
@@ -15,27 +18,20 @@ function getComputerChoice () {
     return state;  
 }
 
-function selection () {
+function playerSelection () {
     // let params = prompt(`Select either of the three: 'rock' 'paper' or 'scissors'`);
-    let  verify = makeCaseInsensitive(params);
+    let  verify = params;
     let state;
     if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
         state = verify;
     }   else {
         alert(`You've entered a wrong entry`);
-        selection();
+        playerSelection();
     }
     return state;
 } 
 
-// Make the selection case insensitive
-function makeCaseInsensitive (arg) {
-    let result = '';
-    for (let i = 0; i < arg.length; i++) {
-        result = result.concat(arg[i].toLowerCase());
-    }
-    return result;
-}
+
 
 function playRound(a, b) {
     let state;
@@ -57,14 +53,11 @@ function playRound(a, b) {
     return state;
 }
 
-let playerSelection = selection();
-let computerSelection = getComputerChoice();
-
-/* function game () {
+function game () {
     let you = 0; 
     let computer = 0;
     for (let i = 0; i < 5; i++) {
-    let play = playRound(selection(), getComputerChoice());
+    let play = playRound(playerSelection(), getComputerChoice());
         if (play == `you`) {
         you++;
         } else {
@@ -72,6 +65,26 @@ let computerSelection = getComputerChoice();
         }
     }
     return you > computer ? `You win !!` : `Computer wins !!`;
-}; */
+};
 
-// console.log(game());
+
+
+
+
+
+
+
+
+
+
+
+
+// Make the selection case insensitive
+function makeCaseInsensitive (arg) {
+    let result = '';
+    for (let i = 0; i < arg.length; i++) {
+        result = result.concat(arg[i].toLowerCase());
+    }
+    return result;
+}
+console.log(game());
