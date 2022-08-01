@@ -16,7 +16,7 @@ function getComputerChoice () {
 }
 
 function selection () {
-    let params = prompt(`Select either of the three: 'rock' 'paper' or 'scissors'`);
+    // let params = prompt(`Select either of the three: 'rock' 'paper' or 'scissors'`);
     let  verify = makeCaseInsensitive(params);
     let state;
     if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
@@ -60,7 +60,7 @@ function playRound(a, b) {
 let playerSelection = selection();
 let computerSelection = getComputerChoice();
 
-function game () {
+/* function game () {
     let you = 0; 
     let computer = 0;
     for (let i = 0; i < 5; i++) {
@@ -72,6 +72,6 @@ function game () {
         }
     }
     return you > computer ? `You win !!` : `Computer wins !!`;
-};
+}; */
 
-console.log(game());
+// console.log(game());
