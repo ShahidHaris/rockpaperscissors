@@ -1,124 +1,56 @@
-const button = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.option');
+const resultDiv = document.getElementById('resultDiv');
 
-let compEntry;
-// computer choice
-function getComputerChoice() {
-    const randNum = Math.floor(Math.random() * 3) + 1;
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let pInput = button.textContent;
+        let cOptions = ['ROCK', 'PAPER', 'SCISSORS']
+        let cInput = cOptions[Math.floor(Math.random() * 3)];
+        playRound(pInput, cInput);
+        updateScore();
+        if (game()) {
+            pCount = cCount = 0;
+            updateScore()};
+    });
+});
 
-    switch (randNum) {
-        case 1:
-            compEntry = 'rock';
-            break;
-        case 2:
-            compEntry = 'paper';
-            break;
-        case 3:
-            compEntry = 'scissors';
-            break;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// make to computer random;y choose
-/* function getComputerChoice () {
-    let random;
-    let max = 9;
-    let state;
-    random = Math.floor(Math.random() * max);
-    if (random >= 0 && random <= 2) {
-        state = 'rock';
-    } else if (random >= 3 && random <= 5) {
-        state = 'paper';
-    } else {
-        state = 'scissors';
-    }
-    return state;  
-} */
-
-function playerSelection () {
-    let state;
-    
-    
-    return state;
-} 
-
-
-
-function playRound(a, b) {
-    let state;
-    if (b == 'rock' && a == 'paper') {
-        state  = `you`;
-    } else if (b == 'rock' && a == 'scissors') {
-        state  = `computer`;
-    } else if (b == 'paper' && a == 'scissors') {
-        state  = `you`;
-    } else if (a == 'rock' && b == 'paper') {
-        state  = `computer`;
-    } else if (a == 'rock' && b == 'scissors') {
-        state  = `you`;
-    } else if (a == 'paper' && b == 'scissors') {
-        state  = `computer`;
-    } else {
-        return `${alert('add another selection')}` + playRound(selection(), getComputerChoice());
-    }
-    return state;
-}
-
-function game () {
-    let you = 0; 
-    let computer = 0;
-    for (let i = 0; i < 5; i++) {
-    let play = playRound(playerSelection(), getComputerChoice());
-        if (play == `you`) {
-        you++;
+let pCount = 0;
+let cCount = 0;
+function playRound(pInput, cInput) {
+    if (pInput == cInput) {
+        pCount = pCount + 0;
+        cCount = cCount + 0;
+    } else if (pInput == 'ROCK') {
+        if (cInput == 'PAPER') {
+            cCount++;
         } else {
-        computer++;
+            pCount++;
+        }
+    } else if (pInput == 'PAPER') {
+        if (cInput == 'ROCK') {
+            pCount++;
+        } else {
+            cCount++; 
+        }
+    } else if (pInput == 'SCISSORS') {
+        if (cInput == 'PAPER') {
+            pCount++;
+        } else {
+            cCount++;   
         }
     }
-    return you > computer ? `You win !!` : `Computer wins !!`;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Make the selection case insensitive
-/* function makeCaseInsensitive (arg) {
-    let result = '';
-    for (let i = 0; i < arg.length; i++) {
-        result = result.concat(arg[i].toLowerCase());
-    }
-    return result;
 }
-console.log(game());
 
-for (let i = 0; i < button.length; i++) {
-    if (button[i].className == 'rock' || button[i].className == 'paper' || button[i].className == 'scissors') {
-        state = button[i];
+function updateScore() {
+    document.getElementById('pSpan').textContent = pCount;
+    document.getElementById('cSpan').textContent = cCount;
+}
+
+function game(params) {
+    if (pCount === 5 || cCount === 5) {
+        pCount === 5 ? resultDiv.textContent = 'You Win, Congartulation' : resultDiv.textContent = 'Computer is the winner, try agin';
+        return true;
     }
-} */
+    resultDiv.textContent = '';
+    return false;
+}
