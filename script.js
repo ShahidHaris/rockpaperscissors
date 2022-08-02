@@ -1,9 +1,43 @@
-// select the buttons
 const button = document.querySelectorAll('button');
+
+let compEntry;
+// computer choice
+function getComputerChoice() {
+    const randNum = Math.floor(Math.random() * 3) + 1;
+
+    switch (randNum) {
+        case 1:
+            compEntry = 'rock';
+            break;
+        case 2:
+            compEntry = 'paper';
+            break;
+        case 3:
+            compEntry = 'scissors';
+            break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // make to computer random;y choose
-function getComputerChoice () {
+/* function getComputerChoice () {
     let random;
     let max = 9;
     let state;
@@ -16,18 +50,12 @@ function getComputerChoice () {
         state = 'scissors';
     }
     return state;  
-}
+} */
 
 function playerSelection () {
-    // let params = prompt(`Select either of the three: 'rock' 'paper' or 'scissors'`);
-    let  verify = params;
     let state;
-    if (verify == 'rock' || verify == 'paper' || verify == 'scissors') {
-        state = verify;
-    }   else {
-        alert(`You've entered a wrong entry`);
-        playerSelection();
-    }
+    
+    
     return state;
 } 
 
@@ -48,7 +76,7 @@ function playRound(a, b) {
     } else if (a == 'paper' && b == 'scissors') {
         state  = `computer`;
     } else {
-        return playRound(selection(), getComputerChoice());
+        return `${alert('add another selection')}` + playRound(selection(), getComputerChoice());
     }
     return state;
 }
@@ -80,7 +108,7 @@ function game () {
 
 
 // Make the selection case insensitive
-function makeCaseInsensitive (arg) {
+/* function makeCaseInsensitive (arg) {
     let result = '';
     for (let i = 0; i < arg.length; i++) {
         result = result.concat(arg[i].toLowerCase());
@@ -88,3 +116,9 @@ function makeCaseInsensitive (arg) {
     return result;
 }
 console.log(game());
+
+for (let i = 0; i < button.length; i++) {
+    if (button[i].className == 'rock' || button[i].className == 'paper' || button[i].className == 'scissors') {
+        state = button[i];
+    }
+} */
